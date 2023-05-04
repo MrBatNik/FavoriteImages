@@ -8,18 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		1B8777412A042A3900C2ECE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8777402A042A3900C2ECE2 /* AppDelegate.swift */; };
-		1B8777452A042A3900C2ECE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8777442A042A3900C2ECE2 /* ViewController.swift */; };
+		1B8777452A042A3900C2ECE2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8777442A042A3900C2ECE2 /* SearchViewController.swift */; };
 		1B87774A2A042A3E00C2ECE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B8777492A042A3E00C2ECE2 /* Assets.xcassets */; };
 		1B87774D2A042A3E00C2ECE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B87774B2A042A3E00C2ECE2 /* LaunchScreen.storyboard */; };
+		1B8777552A042D7400C2ECE2 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8777542A042D7400C2ECE2 /* TabBarViewController.swift */; };
+		1B87775C2A0436A600C2ECE2 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87775B2A0436A600C2ECE2 /* FavoriteViewController.swift */; };
+		1B8777602A04377000C2ECE2 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87775F2A04377000C2ECE2 /* ImageModel.swift */; };
+		1B8777632A043F4600C2ECE2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8777622A043F4600C2ECE2 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B87773D2A042A3900C2ECE2 /* FavoriteImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoriteImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B8777402A042A3900C2ECE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1B8777442A042A3900C2ECE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B8777442A042A3900C2ECE2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1B8777492A042A3E00C2ECE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B87774C2A042A3E00C2ECE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B87774E2A042A3E00C2ECE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B8777542A042D7400C2ECE2 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		1B87775B2A0436A600C2ECE2 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		1B87775F2A04377000C2ECE2 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		1B8777622A043F4600C2ECE2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +61,48 @@
 			isa = PBXGroup;
 			children = (
 				1B8777402A042A3900C2ECE2 /* AppDelegate.swift */,
-				1B8777442A042A3900C2ECE2 /* ViewController.swift */,
+				1B8777542A042D7400C2ECE2 /* TabBarViewController.swift */,
+				1B8777612A043F2B00C2ECE2 /* Views */,
+				1B87775E2A04375E00C2ECE2 /* Models */,
+				1B87775A2A04362300C2ECE2 /* FavoriteView */,
+				1B8777592A04361300C2ECE2 /* SearchView */,
 				1B8777492A042A3E00C2ECE2 /* Assets.xcassets */,
 				1B87774B2A042A3E00C2ECE2 /* LaunchScreen.storyboard */,
 				1B87774E2A042A3E00C2ECE2 /* Info.plist */,
 			);
 			path = FavoriteImages;
+			sourceTree = "<group>";
+		};
+		1B8777592A04361300C2ECE2 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				1B8777442A042A3900C2ECE2 /* SearchViewController.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		1B87775A2A04362300C2ECE2 /* FavoriteView */ = {
+			isa = PBXGroup;
+			children = (
+				1B87775B2A0436A600C2ECE2 /* FavoriteViewController.swift */,
+			);
+			path = FavoriteView;
+			sourceTree = "<group>";
+		};
+		1B87775E2A04375E00C2ECE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1B87775F2A04377000C2ECE2 /* ImageModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1B8777612A043F2B00C2ECE2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B8777622A043F4600C2ECE2 /* CustomButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +175,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B8777452A042A3900C2ECE2 /* ViewController.swift in Sources */,
+				1B8777452A042A3900C2ECE2 /* SearchViewController.swift in Sources */,
+				1B8777602A04377000C2ECE2 /* ImageModel.swift in Sources */,
+				1B8777632A043F4600C2ECE2 /* CustomButton.swift in Sources */,
+				1B8777552A042D7400C2ECE2 /* TabBarViewController.swift in Sources */,
+				1B87775C2A0436A600C2ECE2 /* FavoriteViewController.swift in Sources */,
 				1B8777412A042A3900C2ECE2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,9 +334,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.private.FavoriteImages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -314,9 +365,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.private.FavoriteImages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
