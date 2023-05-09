@@ -16,7 +16,16 @@ protocol SearchViewLogic: AnyObject {
 
 final class SearchViewController: UIViewController, SearchViewLogic {
     
-    private var presenter: SearchViewPresentationLogic?
+    var presenter: SearchViewPresentationLogic?
+    
+    init(presenter: SearchViewPresentationLogic) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = SearchView()
@@ -24,7 +33,7 @@ final class SearchViewController: UIViewController, SearchViewLogic {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        builder()
+        presenter?.viewController = self
         presenter?.initialSetup()
     }
     
@@ -40,11 +49,6 @@ final class SearchViewController: UIViewController, SearchViewLogic {
     
     func onFavoriteButtonTap(message: String) {
         display(message: message)
-    }
-    
-    private func builder() {
-        presenter = SearchViewPresenter()
-        presenter?.viewController = self
     }
     
     func presentError(message: String) {
