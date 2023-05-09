@@ -25,7 +25,7 @@ private extension TabBarViewController {
     
     func setupViewControllers() {
         viewControllers = [
-            createNavigationController(for: SearchViewController(),
+            createNavigationController(for: SearchViewController(presenter: SearchViewPresenter()),
                                        title: "Search",
                                        image: UIImage(named: "magnifyingglass.circle")),
             createNavigationController(for: FavoriteViewController(),
