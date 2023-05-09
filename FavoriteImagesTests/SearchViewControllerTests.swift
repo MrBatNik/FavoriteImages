@@ -1,6 +1,6 @@
 //
-//  FavoriteImagesTests.swift
-//  FavoriteImagesTests
+//  SearchViewControllerTests.swift
+//  SearchViewControllerTests
 //
 //  Created by Nikita Batrakov on 09.05.2023.
 //

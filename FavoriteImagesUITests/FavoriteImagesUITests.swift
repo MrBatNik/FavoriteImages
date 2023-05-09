@@ -7,35 +7,60 @@
 
 import XCTest
 
-final class FavoriteImagesUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+class SearchViewControllerTests: XCTestCase {
+    
+    var app: XCUIApplication!
+    
+    override func setUp() {
+        super.setUp()
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        app = XCUIApplication()
         app.launch()
+    }
+    
+    func testSearchViewController() throws {
+        let searchView = app.searchView
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.1))
+        
+        let searchButton = searchView.searchButton
+        let favoriteButton = searchView.favoriteButton
+        let queryTextField = searchView.queryTextField
+        let imageView = searchView.imageView
+        
+        XCTAssertTrue(queryTextField.exists)
+        XCTAssertTrue(searchButton.exists)
+        XCTAssertTrue(favoriteButton.exists)
+        XCTAssertTrue(imageView.exists)
+    }
+    
+}
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+private extension XCUIApplication {
+    
+    var searchView: SearchViewElements {
+        return SearchViewElements(app: self)
+    }
+    
+}
+
+private struct SearchViewElements {
+    
+    let app: XCUIApplication
+
+    var searchButton: XCUIElement {
+        app.buttons["Search"]
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    var favoriteButton: XCUIElement {
+        app.buttons["Add to favorite"]
     }
+
+    var queryTextField: XCUIElement {
+        app.textFields["Search..."]
+    }
+
+    var imageView: XCUIElement {
+        app.images.element(boundBy: 0)
+    }
+    
 }
