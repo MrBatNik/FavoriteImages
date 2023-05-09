@@ -109,7 +109,7 @@ final class SearchView: UIView {
 
 extension SearchView {
     
-    func getQueryURL() -> String? {
+    func getText() -> String? {
         queryTextField?.text
     }
     

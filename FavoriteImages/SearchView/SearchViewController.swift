@@ -10,13 +10,13 @@ import UIKit
 protocol SearchViewLogic: AnyObject {
     func initialSetup()
     func onQueryButtonTap(_ data: Data)
-    func onFavoriteButtonTap()
+    func onFavoriteButtonTap(message: String)
     func presentError(message: String)
 }
 
 final class SearchViewController: UIViewController, SearchViewLogic {
     
-    var presenter: SearchViewPresentationLogic?
+    private var presenter: SearchViewPresentationLogic?
     
     override func loadView() {
         view = SearchView()
@@ -38,8 +38,8 @@ final class SearchViewController: UIViewController, SearchViewLogic {
         view.setImage(data)
     }
     
-    func onFavoriteButtonTap() {
-        
+    func onFavoriteButtonTap(message: String) {
+        display(message: message)
     }
     
     private func builder() {
@@ -54,14 +54,14 @@ final class SearchViewController: UIViewController, SearchViewLogic {
     private func setupQueryAction() {
         guard let view = view as? SearchView else { return }
         view.queryAction = {
-            self.presenter?.onQueryButtonTap(view.getQueryURL())
+            self.presenter?.onQueryButtonTap(view.getText())
         }
     }
     
     private func setupFavoriteAction() {
         guard let view = view as? SearchView else { return }
         view.favoriteAction = {
-            self.presenter?.onFavoriteButtonTap()
+            self.presenter?.onFavoriteButtonTap(view.getText())
         }
     }
 
