@@ -30,6 +30,14 @@ final class SearchViewPresenter: SearchViewPresentationLogic {
             viewController?.presentError(message: "Type request text first")
             return
         }
+        
+        let request = RequestURL.dummy.rawValue + image.parameters()
+        
+        if isExist(imageURL: request) {
+            viewController?.onQueryButtonTap(getData(imageURL: request))
+            return
+        }
+        
         NetworkManager.fetch(image.parameters()) { [weak self] in
             switch $0 {
             case .success(let data):
@@ -50,10 +58,9 @@ final class SearchViewPresenter: SearchViewPresentationLogic {
         }
         
         let request = RequestURL.dummy.rawValue + text.parameters()
-        let imagesData = StorageManager.shared.fetchContext()
         
-        if !isExist(data: imagesData, request) {
-            removeImage(from: imagesData)
+        if !isExist(imageURL: request) {
+            removeImage()
             save(data: currentImageData, for: request)
             self.currentImageData = nil
         } else {
@@ -63,8 +70,9 @@ final class SearchViewPresenter: SearchViewPresentationLogic {
         viewController?.onFavoriteButtonTap(message: "Added to favorite")
     }
     
-    private func isExist(data: [ImageModel], _ imageURL: String) -> Bool {
-        data.contains(where: { $0.imageData == currentImageData && $0.imageURL == imageURL })
+    private func isExist(imageURL: String) -> Bool {
+        let imagesData = StorageManager.shared.fetchContext()
+        return imagesData.contains(where: { $0.imageURL == imageURL })
     }
     
     
@@ -77,10 +85,16 @@ final class SearchViewPresenter: SearchViewPresentationLogic {
         StorageManager.shared.saveContext()
     }
     
-    private func removeImage(from imagesData: [ImageModel]) {
+    private func removeImage() {
+        let imagesData = StorageManager.shared.fetchContext()
         if imagesData.count > 9, let latestImage = imagesData.first {
             StorageManager.shared.deleteContext(latestImage)
             StorageManager.shared.saveContext()
         }
+    }
+    
+    private func getData(imageURL: String) -> Data {
+        let imagesData = StorageManager.shared.fetchContext()
+        return imagesData.first(where: { $0.imageURL == imageURL })?.imageData ?? Data()
     }
 }
